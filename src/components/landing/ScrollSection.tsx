@@ -8,19 +8,17 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-interface CinematicSectionProps {
+interface ScrollSectionProps {
   children: ReactNode;
   className?: string;
   id?: string;
-  noExit?: boolean;
 }
 
-export function CinematicSection({
+export function ScrollSection({
   children,
   className = "",
   id,
-  noExit: _noExit = false,
-}: CinematicSectionProps) {
+}: ScrollSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
 
@@ -51,25 +49,10 @@ export function CinematicSection({
           toggleActions: "play none none reverse",
         },
       });
-
-      const orbs = section.querySelectorAll(".parallax-orb");
-      orbs.forEach((orb) => {
-        gsap.to(orb, {
-          y: -80,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-            invalidateOnRefresh: true,
-          },
-        });
-      });
     }, section);
 
     return () => ctx.revert();
-  }, [_noExit]);
+  }, []);
 
   return (
     <section

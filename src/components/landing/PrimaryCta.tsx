@@ -15,7 +15,7 @@ export function PrimaryCta({ className = "", compact = false }: PrimaryCtaProps)
   return (
     <span className={`relative inline-flex group ${className}`}>
       <span
-        className="absolute -inset-1.5 rounded-2xl bg-meta/25 blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-90 animate-glow-pulse"
+        className="absolute -inset-1 rounded-2xl bg-meta/20 blur-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         aria-hidden
       />
       <a
@@ -27,11 +27,11 @@ export function PrimaryCta({ className = "", compact = false }: PrimaryCtaProps)
             }
           : {})}
         className={[
-          "relative inline-flex items-center justify-center gap-2.5 rounded-xl bg-meta font-semibold text-white shadow-lg shadow-meta/20 transition-all duration-300",
-          "hover:bg-meta-hover hover:shadow-meta/30 hover:scale-[1.02]",
-          "active:scale-[0.98]",
+          "relative inline-flex items-center justify-center gap-2.5 rounded-xl bg-meta font-semibold text-white transition-[transform,background-color,box-shadow]",
+          "hover:bg-meta-hover hover:shadow-[0_12px_40px_-12px_rgba(8,102,255,0.45)]",
+          "active:scale-[0.99]",
           "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-meta",
-          compact ? "px-5 py-3 text-sm" : "px-7 py-4 text-base",
+          compact ? "px-5 py-3 text-sm" : "px-7 py-3.5 text-[15px]",
         ].join(" ")}
       >
         Book My Meta Diagnosis Call

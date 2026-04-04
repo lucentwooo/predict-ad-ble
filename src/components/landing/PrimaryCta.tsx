@@ -6,14 +6,22 @@ function bookingHref(): string {
 type PrimaryCtaProps = {
   className?: string;
   compact?: boolean;
+  /** Stretch button to container width (e.g. sticky mobile bar). */
+  fullWidth?: boolean;
 };
 
-export function PrimaryCta({ className = "", compact = false }: PrimaryCtaProps) {
+export function PrimaryCta({
+  className = "",
+  compact = false,
+  fullWidth = false,
+}: PrimaryCtaProps) {
   const href = bookingHref();
   const unset = href === "#";
 
   return (
-    <span className={`relative inline-flex group ${className}`}>
+    <span
+      className={`relative group ${fullWidth ? "flex w-full" : "inline-flex"} ${className}`}
+    >
       <span
         className="absolute -inset-1 rounded-2xl bg-meta/20 blur-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         aria-hidden
@@ -31,6 +39,7 @@ export function PrimaryCta({ className = "", compact = false }: PrimaryCtaProps)
           "hover:bg-meta-hover hover:shadow-[0_12px_40px_-12px_rgba(8,102,255,0.45)]",
           "active:scale-[0.99]",
           "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-meta",
+          fullWidth ? "w-full" : "",
           compact ? "px-5 py-3 text-sm" : "px-7 py-3.5 text-[15px]",
         ].join(" ")}
       >

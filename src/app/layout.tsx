@@ -20,13 +20,13 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Predict-ad-ble — Meta creative strategy for founder-led teams",
+  title: "Predict-ad-ble | Turn Meta into a growth channel you can trust",
   description:
-    "Diagnose why Meta ads underperform, prioritize high-probability creative tests, and get launch-ready briefs—without a bloated agency retainer.",
+    "Diagnose what is hurting performance, prioritize creative and messaging tests, and launch stronger ads without the usual guesswork.",
   openGraph: {
-    title: "Predict-ad-ble — Meta creative strategy for founder-led teams",
+    title: "Predict-ad-ble | Turn Meta into a growth channel you can trust",
     description:
-      "Turn Meta from a guessing game into a growth channel you can trust.",
+      "For founder-led teams already spending on Meta. Diagnose, prioritize, launch, learn.",
     type: "website",
   },
 };
@@ -42,6 +42,22 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <div
+          className="pointer-events-none fixed inset-0 z-0 opacity-[0.035] mix-blend-overlay"
+          aria-hidden
+        >
+          <svg className="h-full w-full">
+            <filter id="lp-noise">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.9"
+                numOctaves="4"
+                stitchTiles="stitch"
+              />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#lp-noise)" />
+          </svg>
+        </div>
         {children}
       </body>
     </html>

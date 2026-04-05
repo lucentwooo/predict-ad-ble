@@ -1,21 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0a0908;
-  --fg: #f2f0ec;
-  --muted: #8c8984;
-  --line: rgba(255, 255, 255, 0.09);
-  --accent: #0866ff;
-  --accent-hover: #0654d4;
-  --surface: rgba(255, 255, 255, 0.03);
+  --bg: #070708;
+  --fg: #f4f4f5;
+  --muted: #a1a1aa;
+  --meta: #0866ff;
+  --meta-hover: #0654d4;
+  --meta-dim: rgba(8, 102, 255, 0.12);
 }
 
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--fg);
   --color-muted: var(--muted);
-  --color-meta: var(--accent);
-  --color-meta-hover: var(--accent-hover);
+  --color-meta: var(--meta);
+  --color-meta-hover: var(--meta-hover);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-instrument-serif);
@@ -30,26 +29,43 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--meta);
   outline-offset: 2px;
 }
 
-/* Reading column + wide shell */
-.lp-prose {
-  max-width: 38rem;
+/* Hero headline accent */
+.headline-shine {
+  background: linear-gradient(135deg, #fff 0%, #e4e4e7 45%, #0866ff 160%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.lp-shell {
-  max-width: 72rem;
+/* Subtle float for decorative orbs */
+@keyframes lp-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(2%, -3%) scale(1.03);
+  }
 }
 
-/* Hairline rules */
-.rule {
-  border-top: 1px solid var(--line);
+.lp-orb {
+  animation: lp-float 18s ease-in-out infinite;
+}
+
+/* Mockup frame glow pulse on hover */
+.mockup-frame {
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.mockup-frame:hover {
+  box-shadow: 0 0 80px -20px rgba(8, 102, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* FAQ */
@@ -57,6 +73,10 @@ details summary::-webkit-details-marker {
   display: none;
 }
 
-details[open] .faq-chev {
-  transform: rotate(180deg);
+details[open] .faq-plus {
+  transform: rotate(45deg);
+}
+
+details[open] > summary {
+  color: var(--fg);
 }
